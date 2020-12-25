@@ -13,15 +13,15 @@ export const ApiService = {
     },
 
     signup(item) {
-        return axios.post('register', item)  
+        return axios.post('signup', item)  
     },
 
-    editMyProfile(id, item) {
+   /* editMyProfile(id, item) {
         return axios.put(`users/${id}/info`, item, {headers: getAuthHeader()})  
-    },
+    }, */
 
     getUser(id) {
-        return axios.get(`users/${id}`, {headers: getAuthHeader()})  
+        return axios.get(`me/${id}`, {headers: getAuthHeader()})  
     }
 }
 

@@ -22,13 +22,25 @@ export const InnerForm = ({
 
     return (
         <form onSubmit={handleSubmit}>
-            <DefaultInput label="Name">
-                <Field type="text" name="name" className="form-control" />
-                {touched.name && errors.name && <p className="form-text text-danger"> {errors.name} </p>}
+            <DefaultInput label="username">
+                <Field type="text" name="username" className="form-control" />
+                {touched.username && errors.username && <p className="form-text text-danger"> {errors.username} </p>}
             </DefaultInput>
             <DefaultInput label="Email">
                 <Field type="email" name="email" className="form-control" />
                 {touched.email && errors.email && <p className="form-text text-danger"> {errors.email} </p>}
+            </DefaultInput>
+            <DefaultInput label="feild">
+                <Field type="feild" name="feild" className="form-control" />
+                {touched.feild && errors.feild && <p className="form-text text-danger"> {errors.feild} </p>}
+            </DefaultInput>
+            <DefaultInput label="country">
+                <Field type="country" name="country" className="form-control" />
+                {touched.country && errors.country && <p className="form-text text-danger"> {errors.country} </p>}
+            </DefaultInput>
+            <DefaultInput label="phone">
+                <Field type="phone" name="phone" className="form-control" />
+                {touched.phone && errors.phone && <p className="form-text text-danger"> {errors.phone} </p>}
             </DefaultInput>
             <DefaultInput label="Password">
                 <Field type="password" name="password" className="form-control" />

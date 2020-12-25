@@ -24,23 +24,24 @@ class PNavbar extends Component {
     logout = () => {
         this.props.loggedOut()
         unpersistMyInfo()
-    }
+    } 
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
-                <a className="navbar-brand">Expery</a>
+                <a className="navbar-brand">Our App</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ml-auto mr-4">
+                    
+                    <ul className="navbar-nav ml-auto mr-4"> 
                         <NavBarLink to="/login" label="Login" />
                         <NavBarLink to="/signup" label="Signup" />
                         {
                             this.props.isAuthenticated && <NavBarLink to="/profile" label="My Profile" />
                         }
-                        
+
                     </ul>
                     {
                         this.props.isAuthenticated &&

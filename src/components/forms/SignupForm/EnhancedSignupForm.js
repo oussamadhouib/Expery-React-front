@@ -15,17 +15,18 @@ const mapDispatchToProps = dispatch => ({
 export const EnhancedSignupForm = compose(
   connect(null, mapDispatchToProps),
   withFormik({
-    mapPropsToValues: props => ({ name: '', email: '', password: '', passwordConfirm: '' }),
+    mapPropsToValues: props => ({ username: '', email: '',feild: '',country: '',phone: '', password: '', passwordConfirm: '' }),
     validationSchema: Yup.object().shape({
-        name: Yup.string().max(20, 'Do not enter a huge name').min(3, 'Do not enter a tiny name').required('Name is required'),
+        username: Yup.string().max(20, 'Do not enter a huge name').min(3, 'Do not enter a tiny name').required('Name is required'),
         email: Yup.string().email('Invalid email address').required('Email is required'),
         password: Yup.string().matches(passwordPattern, 'Password is not elligible').required('Password is required'),
         passwordConfirm: Yup.string().oneOf([Yup.ref('password') ], 'Please enter a similar password').required('Please confirm your password'),
-        recaptcha: Yup.string().required()
+        recaptcha: Yup.string().required(),
+        phone: Yup.number().min(3, 'Do not enter a tiny number').required('phone is required')
     }),
     // Submission handler
     handleSubmit: (  values,  { props, setSubmitting, setErrors } ) => {
-      ApiService.signup({email: values.email, password: values.password, name: values.name, 'g-recaptcha-response': values.recaptcha}).then(payload=>{
+      ApiService.signup({email: values.email, password: values.password, username: values.username, feild: values.feild, country: values.country, phone: values.phone, 'g-recaptcha-response': values.recaptcha}).then(payload=>{
         setSubmitting(false)
         toast.success("Signed up successfully")
         props.loggedIn(payload)
@@ -33,7 +34,7 @@ export const EnhancedSignupForm = compose(
       }).catch(err=>{
         setErrors({recaptchaExpired:true})
         setSubmitting(false)
-        //toast.error(err.data && err.data.msg ? err.data.msg : 'Error')
+       // toast.error(err.data && err.data.msg ? err.data.msg : 'Error')
       })
     },
   }))(InnerForm);
